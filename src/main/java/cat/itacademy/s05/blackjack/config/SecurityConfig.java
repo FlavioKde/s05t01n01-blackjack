@@ -1,6 +1,7 @@
 package  cat.itacademy.s05.blackjack.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
@@ -12,6 +13,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
  * Configuración de seguridad para aplicaciones WebFlux (Reactivas).
  * Descomenta las secciones según necesites.
  */
+@Configuration
 @EnableWebFluxSecurity // Habilita seguridad reactiva
 public class SecurityConfig {
 
@@ -19,7 +21,7 @@ public class SecurityConfig {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         return http
                 // --- Configuración CSRF (Protección contra ataques) ---
-                .csrf(csrf -> csrf.disable()) // ⚠️ Descomenta si usas Postman/Insomnia. En producción, evalúa riesgos.
+                .csrf(ServerHttpSecurity.CsrfSpec::disable) // ⚠️ Descomenta si usas Postman/Insomnia. En producción, evalúa riesgos.
                 // .csrf(csrf -> csrf.csrfTokenRepository(CookieServerCsrfTokenRepository.withHttpOnlyFalse())) // Alternativa para frontend
 
                 // --- Reglas de autorización ---
@@ -27,8 +29,10 @@ public class SecurityConfig {
                         // Endpoints públicos (sin autenticación)
                         .pathMatchers(
                                 "/swagger-ui.html",
+                                "/swagger-ui/**",
                                 "/v3/api-docs/**",
-                                "/webjars/**"
+                                "/webjars/**",
+                                "/api-docs/**"
                         ).permitAll() // Permite acceso a Swagger
 
                         // Endpoints protegidos por roles (ejemplo)
@@ -40,8 +44,8 @@ public class SecurityConfig {
                 )
 
                 // --- Autenticación ---
-                // .httpBasic(withDefaults()) // Autenticación básica (usuario/contraseña)
-                // .formLogin(form -> form.disable()) // Desactiva login por formulario (sin frontend)
+                // .httpBasic(ServerHttpSecurity.HttpBasicSpec::disable) // Autenticación básica (usuario/contraseña)
+                // .formLogin(ServerHttpSecurity.FormLoginSpec::disable) // Desactiva login por formulario (sin frontend)
 
                 .build();
     }
