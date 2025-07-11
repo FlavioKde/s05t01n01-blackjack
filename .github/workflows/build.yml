@@ -20,3 +20,7 @@ jobs:
 
       - name: Compilar con Gradle
         run: ./gradlew build -x test
+
+      - name: Refresh Gradle dependencies
+        run: ./gradlew build --refresh-dependencies
+
