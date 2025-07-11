@@ -18,7 +18,7 @@ jobs:
       - name: Dar permisos a gradlew
         run: chmod +x ./gradlew
 
-      - name: Refresh Gradle dependencies
-        run: ./gradlew build --refresh-dependencies -x test
+      - name: Compilar sin ejecutar tests
+        run: ./gradlew build -x test
 
       
