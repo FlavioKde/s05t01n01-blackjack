@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 
 
-@Document(collection="GameLogs")
+@Document(collection="gameLogs")
 public class GameLog {
     @Id
     private String id;
