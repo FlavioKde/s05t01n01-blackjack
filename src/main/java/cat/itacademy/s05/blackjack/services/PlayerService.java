@@ -36,7 +36,7 @@ public class PlayerService {
     }
 
     //@Override
-    public void deleteByid(Long id){
-        playerRepository.deleteById(id);
+    public Mono<Void> deleteByid(Long id){
+        return playerRepository.deleteById(id);
     }
 }

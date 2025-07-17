@@ -4,27 +4,44 @@ import cat.itacademy.s05.blackjack.model.mysql.Player;
 import cat.itacademy.s05.blackjack.repository.mysql.interfaces.PlayerRepository;
 import cat.itacademy.s05.blackjack.services.PlayerService;
 import org.junit.jupiter.api.Test;
+
 import org.reactivestreams.Publisher;
+import org.springframework.data.relational.core.sql.When;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
 public class PlayerServiceTest {
+
+    PlayerRepository playerRepository = mock(PlayerRepository.class);
+
+    PlayerService playerService = new PlayerService(playerRepository);
 
     @Test
     public void testSave() {
 
-        //given
-        PlayerRepository playerRepository = new PlayerRepository() ;
+        Player player = new Player();
 
-        PlayerService playerService = new PlayerService(playerRepository);
+        player.setId(1l);
+        player.setName("Pepo");
+        player.setAge(33);
+
+        when(playerRepository.save(player)).thenReturn(Mono.just(player));
+
+        Mono<Player> result = playerService.save(player);
+
+        Player savedPlayer = result.block();
+
+        assertNotNull(savedPlayer);
+        assertEquals("Pepo", savedPlayer.getName());
+        assertEquals(1l, savedPlayer.getId());
+        assertEquals(33, savedPlayer.getId());
 
 
-        //When
-
-
-
-        //them
-        return playerRepository.save(fr);
     }
 
     @Test
@@ -34,7 +51,10 @@ public class PlayerServiceTest {
     }
     @Test
     public void testFindAll(){
-        return playerRepository.findAll();
+        Flux<Player> result = playerService.findAll();
+                 assertNotNull(result);
+                 //assertFalse(result.);
+                 //assertEquals("Pedro", result.(0).getName());
     }
 
     @Test
@@ -43,7 +63,7 @@ public class PlayerServiceTest {
     }
 
     @Test
-    public void TestDeleteByid(){
+    public void testDeleteByid(){
         playerRepository.deleteById();
     }
 }
