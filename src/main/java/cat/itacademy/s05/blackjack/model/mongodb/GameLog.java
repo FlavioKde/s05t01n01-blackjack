@@ -4,22 +4,18 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @Document(collection="gameLogs")
 public class GameLog {
     @Id
     private String id;
-
     private String playerName;
-
     private Long playerId;
-
     private List<Card> playerCards;
-
     private List<Card> dealerCards;
-
-    private String gameStatus;
+    private GameStatus gameStatus;
 
 
 
@@ -67,11 +63,25 @@ public class GameLog {
         this.dealerCards = dealerCards;
     }
 
-    public String getGameStatus() {
+    public GameStatus getGameStatus() {
         return gameStatus;
     }
 
-    public void setGameStatus(String gameStatus) {
+    public void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if(this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        GameLog gameLog = (GameLog) object;
+        return Objects.equals(id, gameLog.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+
     }
 }
