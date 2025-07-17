@@ -1,6 +1,7 @@
 package cat.itacademy.s05.blackjack.model.mysql;
 
 
+import cat.itacademy.s05.blackjack.model.mongodb.Card;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -9,7 +10,7 @@ public class Player {
     @Id
     private long id;
     private String name;
-    private int age;
+    private Card card;
 
     public Player(){
 
@@ -31,12 +32,12 @@ public class Player {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public Card getCard() {
+        return card;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setCard(Card card) {
+        this.card = card;
     }
 
     @Override
@@ -44,7 +45,7 @@ public class Player {
         return "Player{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", age=" + age +
+                ", age=" + card +
                 '}';
     }
 }
