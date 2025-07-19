@@ -6,10 +6,12 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
+
 
 @Service
 public class PlayerService {
-    private PlayerRepository playerRepository;
+    private PlayerRepository playerRepository ;
 
     public PlayerService(PlayerRepository playerRepository){
         this.playerRepository = playerRepository;
@@ -17,6 +19,7 @@ public class PlayerService {
 
     //@Override
     public Mono<Player> save(Player player) {
+        player.setRegistrationDate(LocalDateTime.now());//seteo y creo la data de registro cuando creo el player
         return playerRepository.save(player);
     }
 

@@ -28,7 +28,7 @@ public class PlayerServiceTest {
 
         player.setId(1l);
         player.setName("Pepo");
-        player.setAge(33);
+
 
         when(playerRepository.save(player)).thenReturn(Mono.just(player));
 
@@ -39,16 +39,18 @@ public class PlayerServiceTest {
         assertNotNull(savedPlayer);
         assertEquals("Pepo", savedPlayer.getName());
         assertEquals(1l, savedPlayer.getId());
-        assertEquals(33, savedPlayer.getId());
+
 
 
     }
-
+/*
     @Test
     public void testUpdate () {
         return playerRepository.save();
 
     }
+
+ */
     @Test
     public void testFindAll(){
         Flux<Player> result = playerService.findAll();

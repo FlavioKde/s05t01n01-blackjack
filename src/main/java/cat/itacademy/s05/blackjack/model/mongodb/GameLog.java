@@ -12,7 +12,7 @@ public class GameLog {
     @Id
     private String id;
     private String playerName;
-    private Long playerId;
+    private long playerId;
     private List<Card> playerCards;
     private List<Card> dealerCards;
     private GameStatus gameStatus;
