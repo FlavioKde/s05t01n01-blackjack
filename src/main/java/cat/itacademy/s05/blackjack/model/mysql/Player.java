@@ -1,20 +1,18 @@
 package cat.itacademy.s05.blackjack.model.mysql;
 
-
-import cat.itacademy.s05.blackjack.model.mongodb.Card;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
+
+import java.time.LocalDateTime;
 
 @Table("players")
 public class Player {
     @Id
     private long id;
     private String name;
-    private Card card;
+    private LocalDateTime registrationDate;
 
-    public Player(){
-
-    }
+    public Player() {}
 
     public long getId() {
         return id;
@@ -32,12 +30,12 @@ public class Player {
         this.name = name;
     }
 
-    public Card getCard() {
-        return card;
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
     }
 
-    public void setCard(Card card) {
-        this.card = card;
+    public void setRegistrationDate(LocalDateTime registrationDate) {
+        this.registrationDate = registrationDate;
     }
 
     @Override
@@ -45,7 +43,7 @@ public class Player {
         return "Player{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", age=" + card +
+                ", registrationDate=" + registrationDate +
                 '}';
     }
 }
