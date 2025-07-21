@@ -1,5 +1,6 @@
 package cat.itacademy.s05.blackjack.services;
 
+import cat.itacademy.s05.blackjack.exception.exceptions.PlayerNotFoundException;
 import cat.itacademy.s05.blackjack.model.mysql.Player;
 import cat.itacademy.s05.blackjack.repository.mysql.interfaces.PlayerRepository;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,9 @@ public class PlayerService {
 
     //@Override
     public Mono<Player> update (Player player) {
+        if (playerRepository.existsById(player.getId())){
+            throw new PlayerNotFoundException(player.getId());
+        }
         return playerRepository.save(player);
 
     }
@@ -34,12 +38,12 @@ public class PlayerService {
     }
 
     //@Override
-    public Mono<Player>findByid(Long id){
+    public Mono<Player>findById(Long id){
         return playerRepository.findById(id);
     }
 
     //@Override
-    public Mono<Void> deleteByid(Long id){
+    public Mono<Void> deleteById(Long id){
         return playerRepository.deleteById(id);
     }
 }

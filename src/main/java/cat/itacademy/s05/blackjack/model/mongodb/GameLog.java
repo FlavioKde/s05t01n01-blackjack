@@ -1,14 +1,20 @@
 package cat.itacademy.s05.blackjack.model.mongodb;
 
+import cat.itacademy.s05.blackjack.dto.MoveType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
 
 @Document(collection="gameLogs")
 public class GameLog {
+    public void setPlayerId(long playerId) {
+        this.playerId = playerId;
+    }
+
     @Id
     private String id;
     private String playerName;
@@ -16,6 +22,9 @@ public class GameLog {
     private List<Card> playerCards;
     private List<Card> dealerCards;
     private GameStatus gameStatus;
+    private BigDecimal betAmount;
+    private MoveType lastMoveType;
+    private BigDecimal totalAmount;
 
 
 
@@ -69,6 +78,30 @@ public class GameLog {
 
     public void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
+    }
+
+    public MoveType getLastMoveType() {
+        return lastMoveType;
+    }
+
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public void setLastMoveType(MoveType lastMoveType) {
+        this.lastMoveType = lastMoveType;
+    }
+
+    public BigDecimal getBetAmount() {
+        return betAmount;
+    }
+
+    public void setBetAmount(BigDecimal betAmount) {
+        this.betAmount = betAmount;
     }
 
     @Override
