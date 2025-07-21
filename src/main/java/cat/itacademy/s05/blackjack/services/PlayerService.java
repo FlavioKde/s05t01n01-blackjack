@@ -26,12 +26,16 @@ public class PlayerService {
 
     //@Override
     public Mono<Player> update (Player player) {
-        if (playerRepository.existsById(player.getId())){
-            throw new PlayerNotFoundException(player.getId());
+        return playerRepository.existsById(player.getId())
+                    .flatMap(exists -> {
+                        if (!exists) {
+                            return Mono.error(new PlayerNotFoundException(player.getId()));
+                        }
+                        return playerRepository.save(player);
+                    });
         }
-        return playerRepository.save(player);
 
-    }
+
     //@Override
     public Flux<Player> findAll(){
         return playerRepository.findAll();
