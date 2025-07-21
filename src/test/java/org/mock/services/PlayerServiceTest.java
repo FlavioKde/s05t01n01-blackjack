@@ -60,12 +60,12 @@ public class PlayerServiceTest {
     }
 
     @Test
-    public void testFindByid(){
+    public void testFindById(){
         return playerRepository.findById();
     }
 
     @Test
-    public void testDeleteByid(){
+    public void testDeleteById(){
         playerRepository.deleteById();
     }
 }
