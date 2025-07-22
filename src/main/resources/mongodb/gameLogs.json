@@ -1,0 +1,34 @@
+[
+  {
+    "playerName": "Alice",
+    "playerId": 1,
+    "playerCards": [
+      { "suit": "HEARTS", "rank": "TEN" },
+      { "suit": "CLUBS", "rank": "ACE" }
+    ],
+    "dealerCards": [
+      { "suit": "SPADES", "rank": "SEVEN" },
+      { "suit": "DIAMONDS", "rank": "EIGHT" }
+    ],
+    "gameStatus": "WON",
+    "betAmount": 50,
+    "totalAmount": 100,
+    "lastMoveType": "STAND"
+  },
+  {
+    "playerName": "Bob",
+    "playerId": 2,
+    "playerCards": [
+      { "suit": "SPADES", "rank": "FIVE" },
+      { "suit": "SPADES", "rank": "KING" }
+    ],
+    "dealerCards": [
+      { "suit": "DIAMONDS", "rank": "NINE" },
+      { "suit": "DIAMONDS", "rank": "QUEEN" }
+    ],
+    "gameStatus": "LOST",
+    "betAmount": 30,
+    "totalAmount": 0,
+    "lastMoveType": "HIT"
+  }
+]

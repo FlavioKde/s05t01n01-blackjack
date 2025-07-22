@@ -1,2 +1,13 @@
-#**/build/
-#**/*.logs
+# Ignorar TODOS los archivos de log (incluyendo tu archivo específico)
+logs/
+*.log
+
+# Ignorar archivos de IDE y temporales
+.idea/
+.gradle/
+out/
+*.iml
+
+# Opcionales
+**/*.md
+**/*.bat

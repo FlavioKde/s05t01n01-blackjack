@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: blackjack-app
+    ports:
+      - "9000:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      # MySQL (R2DBC)
+      - SPRING_R2DBC_URL=r2dbc:mysql://mysql:3306/dbblackjack
+      - SPRING_R2DBC_USERNAME=root
+      - SPRING_R2DBC_PASSWORD=
+      # MongoDB
+      - SPRING_DATA_MONGODB_HOST=mongodb
+      - SPRING_DATA_MONGODB_PORT=27017
+      - SPRING_DATA_MONGODB_DATABASE=dbblackjack
+    depends_on:
+      - mongodb_blackjack
+      - mysql
+
+  mongodb_blackjack:
+    image: mongo
+    container_name: mongodb_blackjack
+    ports:
+      - "27018:27017"  
+    volumes:
+      - mongodb_data:/data/db
+    
+    command: [--bind_ip_all]  
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes  
+      - MYSQL_DATABASE=dbblackjack
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8085:80"
+    environment:
+      - PMA_HOST=mysql
+    depends_on:
+      - mysql
+volumes:
+  mongodb_data:
+  mysql_data:
