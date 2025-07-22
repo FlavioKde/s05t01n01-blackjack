@@ -44,6 +44,8 @@ public class PlayerServiceTest {
         player.setId(2L);
         player.setName("Lola");
 
+        when(playerRepository.existsById(2L)).thenReturn(Mono.just(true));
+
         when(playerRepository.save(player)).thenReturn(Mono.just(player));
 
         Mono<Player> result = playerService.update(player);
@@ -91,7 +93,7 @@ public class PlayerServiceTest {
         when(playerRepository.deleteById(1L)).thenReturn(Mono.empty());
 
         Mono<Void> result = playerService.deleteById(1L);
-        assertNull(result.block());  // Mono.empty() bloquea en null
+        assertNull(result.block());
         verify(playerRepository, times(1)).deleteById(1L);
     }
 }
