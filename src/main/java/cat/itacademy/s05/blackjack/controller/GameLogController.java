@@ -1,5 +1,6 @@
 package cat.itacademy.s05.blackjack.controller;
 
+import cat.itacademy.s05.blackjack.dto.PlayerStatsDto;
 import cat.itacademy.s05.blackjack.model.mongodb.GameLog;
 import cat.itacademy.s05.blackjack.dto.GamePlayDTO;
 import cat.itacademy.s05.blackjack.services.GameLogService;
@@ -47,6 +48,10 @@ public class GameLogController {
     @PostMapping("/{id}/play")
     public Mono<GameLog> play(@PathVariable String id, @RequestBody GamePlayDTO playDto) {
         return gameLogService.playMove(id, playDto);
+    }
+    @GetMapping("/ranking")
+    public Flux<PlayerStatsDto> getPlayersRanking(){
+        return gameLogService.getPlayersRanking();
     }
 
 }

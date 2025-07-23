@@ -8,17 +8,17 @@ import java.time.LocalDateTime;
 @Table("players")
 public class Player {
     @Id
-    private long id;
+    private Long id;
     private String name;
     private LocalDateTime registrationDate;
 
     public Player() {}
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
