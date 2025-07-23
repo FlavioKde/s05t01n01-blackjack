@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class PlayerStatsDto {
     private Long playerId;
+    private String playerName;
     private int gamesPlayed;
     private int gamesWon;
     private int gamesLost;
@@ -15,8 +16,28 @@ public class PlayerStatsDto {
 
     }
 
+    public PlayerStatsDto(Long playerId, String playerName) {
+        this.playerId = playerId;
+        this.playerName = playerName;
+        this.gamesPlayed = 0;
+        this.gamesWon = 0;
+        this.gamesLost = 0;
+        this.gamesDrawn = 0;
+        this.totalBet = BigDecimal.ZERO;
+        this.totalWon = BigDecimal.ZERO;
+    }
+
+
     public Long getPlayerId() {
         return playerId;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
     public void setPlayerId(Long playerId) {
