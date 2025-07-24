@@ -2,6 +2,7 @@ package cat.itacademy.s05.blackjack.services;
 
 import cat.itacademy.s05.blackjack.dto.GamePlayDTO;
 import cat.itacademy.s05.blackjack.dto.PlayerStatsDto;
+import cat.itacademy.s05.blackjack.exception.exceptions.InvalidBetException;
 import cat.itacademy.s05.blackjack.model.mongodb.GameLog;
 import cat.itacademy.s05.blackjack.repository.mongodb.interfaces.GameLogRepository;
 import org.springframework.stereotype.Service;
@@ -50,7 +51,8 @@ public class GameLogService {
 
     public Mono<GameLog> playMove(String id, GamePlayDTO playDto) {
         if (playDto.getAmount() == null || playDto.getAmount().compareTo(BigDecimal.ZERO) <= 0) {
-            return Mono.error(new IllegalArgumentException("Invalid Bet"));
+
+            return Mono.error(new InvalidBetException("The bet placed is not correct"));
         }
 
         return gameLogRepository.findById(id)

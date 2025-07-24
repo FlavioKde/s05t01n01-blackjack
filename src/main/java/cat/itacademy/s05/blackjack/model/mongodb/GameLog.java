@@ -11,9 +11,7 @@ import java.util.Objects;
 
 @Document(collection="gameLogs")
 public class GameLog {
-    public void setPlayerId(long playerId) {
-        this.playerId = playerId;
-    }
+
 
     @Id
     private String id;

@@ -1,13 +1,17 @@
 package cat.itacademy.s05.blackjack.services;
 
+import cat.itacademy.s05.blackjack.exception.exceptions.InvalidPlayerDataException;
 import cat.itacademy.s05.blackjack.exception.exceptions.PlayerNotFoundException;
 import cat.itacademy.s05.blackjack.model.mysql.Player;
 import cat.itacademy.s05.blackjack.repository.mysql.interfaces.PlayerRepository;
+import jakarta.validation.constraints.Null;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
+
+import static reactor.core.publisher.Mono.error;
 
 
 @Service
@@ -20,8 +24,19 @@ public class PlayerService {
 
 
     public Mono<Player> save(Player player) {
-        player.setRegistrationDate(LocalDateTime.now());//seteo y creo la data de registro cuando creo el player
-        return playerRepository.save(player);
+        return Mono.defer(() -> {
+            player.setRegistrationDate(LocalDateTime.now());
+
+            String name = player.getName();
+            if (name == null || name.trim().isEmpty()) {
+                return Mono.error(new InvalidPlayerDataException(player));
+            }
+
+            name = name.trim();
+            player.setName(name);
+
+            return playerRepository.save(player);
+        });
     }
 
 
@@ -29,7 +44,7 @@ public class PlayerService {
         return playerRepository.existsById(player.getId())
                     .flatMap(exists -> {
                         if (!exists) {
-                            return Mono.error(new PlayerNotFoundException(player.getId()));
+                            return error(new PlayerNotFoundException(player.getId()));
                         }
                         return playerRepository.save(player);
                     });
