@@ -10,7 +10,7 @@ public class Player {
     @Id
     private Long id;
     private String name;
-    private LocalDateTime registrationDate;
+    private LocalDateTime registration_date;
 
     public Player() {}
 
@@ -30,12 +30,8 @@ public class Player {
         this.name = name;
     }
 
-    public LocalDateTime getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(LocalDateTime registrationDate) {
-        this.registrationDate = registrationDate;
+    public void setRegistrationDate(LocalDateTime registration_date) {
+        this.registration_date = registration_date;
     }
 
     @Override
@@ -43,7 +39,7 @@ public class Player {
         return "Player{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", registrationDate=" + registrationDate +
+                ", registrationDate=" + registration_date +
                 '}';
     }
 }
