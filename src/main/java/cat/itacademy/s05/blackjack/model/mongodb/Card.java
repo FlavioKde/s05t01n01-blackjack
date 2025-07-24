@@ -20,4 +20,23 @@ public class Card {
         return rank;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Suit getSuit() {
+        return suit;
+    }
+
+    public void setSuit(Suit suit) {
+        this.suit = suit;
+    }
+
+    public void setRank(Rank rank) {
+        this.rank = rank;
+    }
 }
