@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private final List<Card> playerCards;
-    private final List<Card> dealerCards;
+    private List<Card> playerCards;
+    private List<Card> dealerCards;
 
     public Game(List<Card>playerCards, List<Card>dealerCards){
         this.playerCards = playerCards != null ? playerCards : new ArrayList<>();
@@ -23,4 +23,11 @@ public class Game {
         return dealerCards;
     }
 
+    public void setPlayerCards(List<Card> playerCards) {
+        this.playerCards = playerCards;
+    }
+
+    public void setDealerCards(List<Card> dealerCards) {
+        this.dealerCards = dealerCards;
+    }
 }

@@ -3,8 +3,8 @@ package cat.itacademy.s05.blackjack.dto;
 import java.math.BigDecimal;
 
 public class GamePlayDTO {
-    private final MoveType moveType;
-    private final BigDecimal amount;
+    private  MoveType moveType;
+    private  BigDecimal amount;
 
     public GamePlayDTO(MoveType moveType, BigDecimal amount){
         this.moveType = moveType;
@@ -19,4 +19,11 @@ public class GamePlayDTO {
         return amount;
     }
 
+    public void setMoveType(MoveType moveType) {
+        this.moveType = moveType;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
 }
