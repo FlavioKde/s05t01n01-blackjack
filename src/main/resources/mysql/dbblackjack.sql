@@ -6,10 +6,10 @@ USE dbblackjack;
 CREATE TABLE players (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
-    registrationDate DATETIME NOT NULL   
+    registration_date DATETIME NOT NULL
 );
 
 CREATE TABLE dealers(
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY
 );
 

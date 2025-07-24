@@ -79,3 +79,61 @@ Action:
 
 Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
 
+2025-07-24T13:24:18.613+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] i.s.b.S05t01n01BlackjackApplicationTests : Starting S05t01n01BlackjackApplicationTests using Java 19.0.2 with PID 8972 (started by Admin in C:\Users\Admin\IdeaProjects\s05t01n01-blackjack)
+2025-07-24T13:24:18.620+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] i.s.b.S05t01n01BlackjackApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2025-07-24T13:24:20.891+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-07-24T13:24:20.893+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-07-24T13:24:21.222+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 307 ms. Found 0 MongoDB repository interfaces.
+2025-07-24T13:24:21.233+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-07-24T13:24:21.234+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
+2025-07-24T13:24:21.287+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 1 R2DBC repository interface.
+2025-07-24T13:24:22.001+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-07-24T13:24:22.002+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive MongoDB repositories in DEFAULT mode.
+2025-07-24T13:24:22.086+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Reactive MongoDB - Could not safely identify store assignment for repository candidate interface cat.itacademy.s05.blackjack.repository.mysql.interfaces.PlayerRepository; If you want this repository to be a Reactive MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.ReactiveMongoRepository
+2025-07-24T13:24:22.121+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 111 ms. Found 1 Reactive MongoDB repository interface.
+2025-07-24T13:24:24.628+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|reactive-streams|spring-boot", "version": "5.5.1"}, "os": {"type": "Windows", "name": "Windows 10", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/19.0.2+7-44"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='admin', source='admin', password=<hidden>, mechanismProperties=<hidden>}, transportSettings=NettyTransportSettings{eventLoopGroup=io.netty.channel.nio.NioEventLoopGroup@c497a55, socketChannelClass=null, allocator=null, sslContext=null}, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@7493d937, com.mongodb.Jep395RecordCodecProvider@5dc7841c, com.mongodb.KotlinCodecProvider@4d67d5a4]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2025-07-24T13:24:24.998+02:00  INFO 8972 --- [s05t01n01-blackjack] [cluster-ClusterId{value='688217e88bb971d8105fa7b3', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server localhost:27017
+
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.internal.connection.netty.NettyStream$OpenChannelFutureListener.lambda$operationComplete$1(NettyStream.java:534) ~[mongodb-driver-core-5.5.1.jar:na]
+	at com.mongodb.internal.Locks.lambda$withLock$0(Locks.java:34) ~[mongodb-driver-core-5.5.1.jar:na]
+	at com.mongodb.internal.Locks.checkedWithLock(Locks.java:61) ~[mongodb-driver-core-5.5.1.jar:na]
+	at com.mongodb.internal.Locks.withLock(Locks.java:55) ~[mongodb-driver-core-5.5.1.jar:na]
+	at com.mongodb.internal.Locks.withLock(Locks.java:33) ~[mongodb-driver-core-5.5.1.jar:na]
+	at com.mongodb.internal.connection.netty.NettyStream$OpenChannelFutureListener.operationComplete(NettyStream.java:521) ~[mongodb-driver-core-5.5.1.jar:na]
+	at com.mongodb.internal.connection.netty.NettyStream$OpenChannelFutureListener.operationComplete(NettyStream.java:504) ~[mongodb-driver-core-5.5.1.jar:na]
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:603) ~[netty-common-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:596) ~[netty-common-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:572) ~[netty-common-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:505) ~[netty-common-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:649) ~[netty-common-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:642) ~[netty-common-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:131) ~[netty-common-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:326) ~[netty-transport-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:342) ~[netty-transport-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:784) ~[netty-transport-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732) ~[netty-transport-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658) ~[netty-transport-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998) ~[netty-common-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.122.Final.jar:4.1.122.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1589) ~[na:na]
+Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/[0:0:0:0:0:0:0:1]:27017
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:973) ~[na:na]
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:336) ~[netty-transport-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:339) ~[netty-transport-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:784) ~[netty-transport-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732) ~[netty-transport-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658) ~[netty-transport-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998) ~[netty-common-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.122.Final.jar:4.1.122.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.122.Final.jar:4.1.122.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1589) ~[na:na]
+
+2025-07-24T13:24:27.855+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-07-24T13:24:29.360+02:00  INFO 8972 --- [s05t01n01-blackjack] [Test worker] i.s.b.S05t01n01BlackjackApplicationTests : Started S05t01n01BlackjackApplicationTests in 11.843 seconds (process running for 16.338)
