@@ -13,7 +13,7 @@ services:
       - SPRING_R2DBC_USERNAME=root
       - SPRING_R2DBC_PASSWORD=
       # MongoDB
-      - SPRING_DATA_MONGODB_HOST=mongodb
+      - SPRING_DATA_MONGODB_HOST=mongodb_blackjack
       - SPRING_DATA_MONGODB_PORT=27017
       - SPRING_DATA_MONGODB_DATABASE=dbblackjack
     depends_on:
