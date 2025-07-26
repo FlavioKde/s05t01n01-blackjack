@@ -1,7 +1,9 @@
 FROM eclipse-temurin:19-jdk-jammy AS builder
 WORKDIR /app
 COPY . .
+RUN chmod +x gradlew
 RUN ./gradlew build --no-daemon
+RUN ls -la build/libs && echo "✅ Compilación exitosa"
 
 FROM eclipse-temurin:19-jre-jammy
 WORKDIR /app
