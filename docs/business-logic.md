@@ -90,6 +90,11 @@ Card	Value	Notes
 A (Ace)	1 or 11	Auto-calculated
 2-10	2-10	Face value
 J, Q, K	10	Face cards
+
+
+```
+
+
 ⚠️ Special Cases
 Natural Blackjack
 Ace + any 10-value card (10, J, Q, K) in initial deal
@@ -135,20 +140,17 @@ json
 {
   "playerId": "123",
   "winRate": 0.45,
-  "totalGames": 20,
-  "totalWins": 9,
-  "totalLosses": 8,
-  "pushes": 3,
-  "blackjacks": 2
+  "gamesPlayed" 1,
+  "gamesWon": 20,
+  "gamesLost": 9,
+  "gamesDrawn": 8,
+  "totalBet": 250.00,
+  "totalWon": 2345.00
 }
 🛠️ Future Enhancements
 Implement card splitting
 
-Add insurance side bets
-
-Multiplayer tournament system
-
-Detailed game history viewer
+WIP......
 
 Made with ❤️ by https://github.com/FlavioKde
 ---
