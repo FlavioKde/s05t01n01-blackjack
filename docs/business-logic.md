@@ -63,39 +63,28 @@ The goal is to obtain a hand value closest to 21 without exceeding it ("busting"
 ## 🔄 Game Flow (API Endpoints)
 
 ```mermaid
-sequenceDiagram
-    participant C as Client
-    participant S as Server
-    
-    C->>S: POST /game/new (initiate game)
-    S->>C: Initial state (dealt cards)
-    
-    loop Player's Turn
-        C->>S: POST /game/{id}/hit (hit)
-        S->>C: New card + status
-        alt If player busts
-            S->>C: DEALER_WON
-        end
-    end
-    
-    C->>S: POST /game/{id}/stand (stand)
-    
-    loop Dealer's Turn
-        S->>S: Draws until ≥17
-    end
-    
-    S->>C: Final result
-📊 Card Values
-Card	Value	Notes
-A (Ace)	1 or 11	Auto-calculated
-2-10	2-10	Face value
-J, Q, K	10	Face cards
 
-
+flowchart TD
+    A[Start Game] --> B[Deal Initial Cards]
+    B --> C{Player's Turn}
+    C -->|Hit| D[Draw Card]
+    C -->|Stand| E[Dealer Plays]
+    D --> F{Total ≤ 21?}
+    F -->|Yes| C
+    F -->|No| G[Player Busts]
+    E --> H{Dealer ≥17?}
+    H -->|No| I[Draw Card]
+    H -->|Yes| J[Compare Hands]
+    J --> K{Player > Dealer?}
+    K -->|Yes| L[Player Wins]
+    K -->|No| M{Player = Dealer?}
+    M -->|Yes| N[Push]
+    M -->|No| O[Dealer Wins]
 ```
 
 
-⚠️ Special Cases
+## ⚠️ Special Cases
+
 Natural Blackjack
 Ace + any 10-value card (10, J, Q, K) in initial deal
 
@@ -113,7 +102,7 @@ Not implemented in current version
 MongoDB (Atlas)
 Collection gameLogs:
 
-json
+```json
 {
   "gameId": "UUID",
   "playerId": "123",
@@ -123,6 +112,8 @@ json
   "status": "PLAYER_WON",
   "timestamp": "2023-07-28T12:34:56Z"
 }
+
+```
 
 MySQL (Railway)
 Table players:
