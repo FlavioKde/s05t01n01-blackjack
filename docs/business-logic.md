@@ -129,7 +129,7 @@ CREATE TABLE players (
 📈 Available Statistics
 GET /statistics/{playerId}:
 
-json
+```json
 {
   "playerId": "123",
   "winRate": 0.45,
@@ -140,6 +140,8 @@ json
   "totalBet": 250.00,
   "totalWon": 2345.00
 }
+
+```
 🛠️ Future Enhancements
 
 Implement card splitting
