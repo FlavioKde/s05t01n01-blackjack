@@ -118,12 +118,14 @@ Collection gameLogs:
 MySQL (Railway)
 Table players:
 
-sql
+```sql
 CREATE TABLE players (
   player_id VARCHAR(36) PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   localDataTime registration_date  
 );
+```
+
 📈 Available Statistics
 GET /statistics/{playerId}:
 
@@ -139,6 +141,7 @@ json
   "totalWon": 2345.00
 }
 🛠️ Future Enhancements
+
 Implement card splitting
 
 WIP......
