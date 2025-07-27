@@ -1,53 +1,154 @@
-# 🃏 Business Logic Documentation - Blackjack Game
+# 🃏 Blackjack Game Logic Documentation
 
 ## 🎯 Game Objective
+The goal is to obtain a hand value closest to 21 without exceeding it ("busting"), beating the dealer (house). Players compete only against the dealer, not other players.
 
-Blackjack is a card game where the player competes against Dealer (the bank). The objective is to add the closest possible value to 21 without passing. If the player surpasses Dealer without going from 21, he wins the game.
+## 👥 Core Entities (Models)
 
-## 👥 Main entities
+### Player
+- **Attributes**:
+  - `playerId`: Unique identifier
+  - `playerName`: Player display name
+  - `localDataTime`: registration_date
+  
 
-- ** Player **: It has name, hand (letters), bet, current state.
-- ** Dealer **: Banking hand. Play with fixed rules (steal up to 17).
-- ** Letter **: It has a stick, value, name (eg, "as of hearts").
-- ** Baraja **: Set of letters available to distribute.
-- ** Item **: Current state of the game and active dealer.
-- ** Bet **: Value bet on the player in the game.
+### Dealer
+- **Attributes**:
+  - `dealerId`: Unique identifier
 
-## 🔁 General Game Flow
+  
+### Card
+- **Attributes**:
+  - `suit`: ♥ Hearts, ♦ Diamonds, ♣ Clubs, ♠ Spades
+  - `rank`: A, 2-10, J, Q, K
+  - `value`: Numeric value (dynamically calculated)
 
-1. ** Home **: A new game is created, the cards are considered.
-2. ** Initial cast **: Two cards are distributed to the player and two to the dealer (a mouth down).
-3. ** Player's turn **: 
-- You can choose *"ask for a letter" *, *"plant" *or *"duplicate" *. 
-- If it exceeds 21, it automatically loses (*"passes"*).
-4. ** Dealer turn **: 
-- Steal cards until you reach at least 17 points. 
-- If you pass, the player wins.
-5. ** Result **: 
-- Wins who is closer to 21 without passing. 
-- If there is a tie (the same score), the game is canceled.
+### GameLog
+- **States**:
+  - id: Unique identifier
+  - playerName: player name
+  - playerId: Unique identifier
+  - List<Card> playerCards: Cards list player
+  - List<Card> dealerCards: Cards list dealer
+  - gameStatus: ENUM
+  - betAmount: BigDecimal bet
+  - lastMoveType: ENUM
+  - totalAmount BigDecimal amount
 
-## 📐 Letters value rules
+## 👥 Domain (logic)
 
-- Numerical letters: value equal to number.
-- Figures (J, Q, K): They are worth 10.
-- As: 1 or 11 can be worth, as appropriate.
+### Game
+- **Attributes**:
+  - List<Card> playerCards: Cards list player
+  - List<Card> dealerCards: Cards list dealer
 
-## ⚠️ Special cases
+## 👥 DTO (data tranfer)
 
-- ** Blackjack Natural **: AS + letter of value 10 in the first hand.
-- ** ATTACK **: If player and dealer have the same final hand.
-- ** Canceled item **: If the deck is empty or the system fails.
+### GamePlayDto
+- **Attributes**:
+  - MoveType moveType: ENUM
+  - BigDecimal amount: BigDecimal amount
 
-## 💾 Persistence
+### PlayerStatsDto
+- **Attributes**:
+  - playerId: Unique identifier
+  - playerName: Player name
+  - gamesPlayed: Games play
+  - gamesWon: Games won
+  - gamesLost: Games lost
+  - gamesDrawn: Games draw
+  - BigDecimal totalBet: BigDecimal bet
+  - BigDecimal totalWon: Bigdecimal totalWon
 
-- Mongodb: History of games, letters plays, game states.
-- MYSQL: Registered users, betting data, statistics.
+## 🔄 Game Flow (API Endpoints)
 
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant S as Server
+    
+    C->>S: POST /game/new (initiate game)
+    S->>C: Initial state (dealt cards)
+    
+    loop Player's Turn
+        C->>S: POST /game/{id}/hit (hit)
+        S->>C: New card + status
+        alt If player busts
+            S->>C: DEALER_WON
+        end
+    end
+    
+    C->>S: POST /game/{id}/stand (stand)
+    
+    loop Dealer's Turn
+        S->>S: Draws until ≥17
+    end
+    
+    S->>C: Final result
+📊 Card Values
+Card	Value	Notes
+A (Ace)	1 or 11	Auto-calculated
+2-10	2-10	Face value
+J, Q, K	10	Face cards
+⚠️ Special Cases
+Natural Blackjack
+Ace + any 10-value card (10, J, Q, K) in initial deal
+
+Pays 3:2 (1.5x bet)
+
+Push (Tie)
+Player and dealer have equal non-bust totals
+
+Player retains bet
+
+Card Splitting
+Not implemented in current version
+
+💾 Data Persistence
+MongoDB (Atlas)
+Collection gameLogs:
+
+json
+{
+  "gameId": "UUID",
+  "playerId": "123",
+  "dealerHand": ["A♥", "K♠"],
+  "playerHand": ["10♦", "6♣"],
+  "betAmount": 50,
+  "status": "PLAYER_WON",
+  "timestamp": "2023-07-28T12:34:56Z"
+}
+
+MySQL (Railway)
+Table players:
+
+sql
+CREATE TABLE players (
+  player_id VARCHAR(36) PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  localDataTime registration_date  
+);
+📈 Available Statistics
+GET /statistics/{playerId}:
+
+json
+{
+  "playerId": "123",
+  "winRate": 0.45,
+  "totalGames": 20,
+  "totalWins": 9,
+  "totalLosses": 8,
+  "pushes": 3,
+  "blackjacks": 2
+}
+🛠️ Future Enhancements
+Implement card splitting
+
+Add insurance side bets
+
+Multiplayer tournament system
+
+Detailed game history viewer
+
+Made with ❤️ by https://github.com/FlavioKde
 ---
-
-*This documentation can be expanded with examples of the game, diagrams and detailed explanation of each action. Last update: July 2025.*
-Enviar comentarios
-Paneles laterales
-Historial
-Guardado
