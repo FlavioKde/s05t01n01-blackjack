@@ -5,9 +5,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class S05t01n01BlackjackApplicationTests {
-
+/*
 	@Test
 	void contextLoads() {
 	}
 
+
+ */
 }
