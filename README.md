@@ -1,4 +1,4 @@
-markdown
+
 # 🌐 REST API Practice Project — Spring Boot web flux_blackjack
 
 [![Render Status](https://img.shields.io/badge/Render-Deployed-success)](https://your-render-url.onrender.com)
